@@ -6,6 +6,7 @@ This project interacts with the Trello API to perform various operations related
 ## Technologies
 
 Postman: For API development and testing
+
 Trello API: The RESTful API provided by Trello
 
 ## Setup Instructions
