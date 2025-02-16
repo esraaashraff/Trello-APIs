@@ -1,0 +1,4058 @@
+{
+	"info": {
+		"_postman_id": "02974164-05ae-4ce8-8af8-ac45345edba7",
+		"name": "Trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37239868"
+	},
+	"item": [
+		{
+			"name": "Create board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json()\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.environment.set(\"Board ID\", jsonData.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards?key={{Key}}&name=My board&token={{Token}}&defaultLists=false&prefs_background=orange",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "name",
+							"value": "My board"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "defaultLists",
+							"value": "false"
+						},
+						{
+							"key": "prefs_background",
+							"value": "orange"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get board",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}?key={{Key}}&name=My board&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "name",
+							"value": "My board"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create calender key",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}}/calendarKey/generate?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}}",
+						"calendarKey",
+						"generate"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update board name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}?key={{Key}}&name=API Board&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "name",
+							"value": "API Board"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a member",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}}/members/{idMember}?type=normal&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}}",
+						"members",
+						"{idMember}"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "normal"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update memberships for board",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/memberships/66fe8ca4b07cb4b89cefb65d?type=observer&key={{Key}}&token={{Token}}&filter=all&activity=false",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"memberships",
+						"66fe8ca4b07cb4b89cefb65d"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "observer"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "filter",
+							"value": "all"
+						},
+						{
+							"key": "activity",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invite member to a board",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/members?email=abdelrahman.hamdy262@gmail.com&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"members"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "abdelrahman.hamdy262@gmail.com"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "type",
+							"value": "admin",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove  member",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}}/members/{idMember}?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}}",
+						"members",
+						"{idMember}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get memberships for board",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/memberships?key={{Key}}&token={{Token}}&filter=all&activity=false",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"memberships"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "filter",
+							"value": "all"
+						},
+						{
+							"key": "activity",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get board members",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/members?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"members"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "abdelrahman.hamdy262@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "type",
+							"value": "admin",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Actions",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/actions?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"actions"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/actions/67abace31b4bd2381d186388?text={text}&key={{Key}}&token={{Token}}&text=New upfate",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"actions",
+						"67abace31b4bd2381d186388"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "{text}"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "text",
+							"value": "New upfate"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the board for an action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/actions/67abace31b4bd2381d186388/board?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"actions",
+						"67abace31b4bd2381d186388",
+						"board"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the card for an action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/actions/67abace31b4bd2381d186388/card?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"actions",
+						"67abace31b4bd2381d186388",
+						"card"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the list for an action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/actions/67abace31b4bd2381d186388/list?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"actions",
+						"67abace31b4bd2381d186388",
+						"list"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the member of an action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/actions/67abace31b4bd2381d186388/member?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"actions",
+						"67abace31b4bd2381d186388",
+						"member"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the organization of an action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/actions/67abace31b4bd2381d186388/organization?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"actions",
+						"67abace31b4bd2381d186388",
+						"organization"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a comment action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/actions/67abace31b4bd2381d186388/text?value=New comment&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"actions",
+						"67abace31b4bd2381d186388",
+						"text"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "New comment"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a specific field of an action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/actions/67abace31b4bd2381d186388/type?text={text}&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"actions",
+						"67abace31b4bd2381d186388",
+						"type"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "{text}"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a boardStars",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/boardStars?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"boardStars"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get checklists",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/checklists?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"checklists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Field",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/name?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"name"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"pm.environment.set(\"List ID\", response.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/lists?name=New&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "New"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/lists?name=Actions&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Actions"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a list",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/lists/67ababa1feb6fdf059ac26cc?key={{Key}}&token={{Token}}&name =Test Conditions",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"67ababa1feb6fdf059ac26cc"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "name ",
+							"value": "Test Conditions"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get actions for a list",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/lists/{{List ID}}/actions?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{List ID}}",
+						"actions"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get filtered lists",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/lists/all?&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"lists",
+						"all"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a label",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/labels?key={{Key}}&token={{Token}}&name=esraa&color=red",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"labels"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "name",
+							"value": "esraa"
+						},
+						{
+							"key": "color",
+							"value": "red"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a label",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}/labels?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}",
+						"labels"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "name",
+							"value": "esraa",
+							"disabled": true
+						},
+						{
+							"key": "color",
+							"value": "red",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"pm.environment.set(\"Card ID\", response.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards?key={{Key}}&token={{Token}}&idList={{List ID}}&name =Test Conditions",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "idList",
+							"value": "{{List ID}}"
+						},
+						{
+							"key": "name ",
+							"value": "Test Conditions"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a card",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a card",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}?key={{Key}}&token={{Token}}&name=cardodou",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "name",
+							"value": "cardodou"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All cards on a list",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/lists/{{List ID}}/cards?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{List ID}}",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Archive all cards on a list",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/lists/{{List ID}}/archiveAllCards?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{List ID}}",
+						"archiveAllCards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Archive or unarchive a list",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/lists/{{List ID}}/closed?key={{Key}}&token={{Token}}&value=true",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{{List ID}}",
+						"closed"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "value",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Field on a Card",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/badges?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"badges"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get actions on a Card",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/actions?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"actions"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an attachment on a card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/attachments?key={{Key}}&token={{Token}}&url=https://www.google.com/search?sca_esv=d1df69ed15318afd%26sxsrf=AHTn8zrneRdhklszwNeX9eD8xxFhPcRYGg:1739215793972%26q=software+testing%26udm=2%26fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBuFKUuwGzOl4g2iN2Y9K8vVHXoU7bsT5GKiaQzCTkBGk2BMbFzNNrwtunpKyX5rStm9Os3KUDBu_sJs19Sz4Vcs-DuXMpBuRWH1HfuUoVkTU8rPqjus43-dg02Ki9IBedfAP_c24G9sS2CcP1W2gftCMPwbC%26sa=X%26ved=2ahUKEwikmNnc67mLAxVZVUEAHTsQIIgQtKgLegQIEBAB%26biw=1366%26bih=641%26dpr=1%23vhid=Uyi-ivNIoEW_rM%26vssid=mosaic",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"attachments"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "url",
+							"value": "https://www.google.com/search?sca_esv=d1df69ed15318afd%26sxsrf=AHTn8zrneRdhklszwNeX9eD8xxFhPcRYGg:1739215793972%26q=software+testing%26udm=2%26fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBuFKUuwGzOl4g2iN2Y9K8vVHXoU7bsT5GKiaQzCTkBGk2BMbFzNNrwtunpKyX5rStm9Os3KUDBu_sJs19Sz4Vcs-DuXMpBuRWH1HfuUoVkTU8rPqjus43-dg02Ki9IBedfAP_c24G9sS2CcP1W2gftCMPwbC%26sa=X%26ved=2ahUKEwikmNnc67mLAxVZVUEAHTsQIIgQtKgLegQIEBAB%26biw=1366%26bih=641%26dpr=1%23vhid=Uyi-ivNIoEW_rM%26vssid=mosaic"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get an Attachment on a card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/attachments/67aa5832727245da50df0d44?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"attachments",
+						"67aa5832727245da50df0d44"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All attachments on a card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/attachments?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"attachments"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Attachment on a card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/attachments/67aa5832727245da50df0d44?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"attachments",
+						"67aa5832727245da50df0d44"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a checklist on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/checklists?key={{Key}}&token={{Token}}&name=To Do",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"checklists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "name",
+							"value": "To Do"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a check item on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/checklist/67aa610f832dd16dfb4ce98f/checkItem?key={{Key}}&token={{Token}}&name=To DO",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"checklist",
+						"67aa610f832dd16dfb4ce98f",
+						"checkItem"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "name",
+							"value": "To DO"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a check Item on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/checkItem/67aa6505d71c1d597591a1d5?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"checkItem",
+						"67aa6505d71c1d597591a1d5"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a check item",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/checkItem/67aa6505d71c1d597591a1d5?key={{Key}}&token={{Token}}&name=First check item",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"checkItem",
+						"67aa6505d71c1d597591a1d5"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "name",
+							"value": "First check item"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a checkItem on a CheckList",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/checklist/67aa610f832dd16dfb4ce98f/checkItem/67aa6505d71c1d597591a1d5?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"checklist",
+						"67aa610f832dd16dfb4ce98f",
+						"checkItem",
+						"67aa6505d71c1d597591a1d5"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the list of a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/list?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"list"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the members of a card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/members?key={{Key}}&token={{Token}}&username",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"members"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "username",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the voted members on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/membersVoted?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"membersVoted"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add member vote to a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/membersVoted?value=5abbe4b7ddc1b351ef961414&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"membersVoted"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "5abbe4b7ddc1b351ef961414"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a plugin data on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/pluginData?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"pluginData"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a sticker on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/stickers?image=taco-cool&top=60&left=40&zIndex=1&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"stickers"
+					],
+					"query": [
+						{
+							"key": "image",
+							"value": "taco-cool"
+						},
+						{
+							"key": "top",
+							"value": "60"
+						},
+						{
+							"key": "left",
+							"value": "40"
+						},
+						{
+							"key": "zIndex",
+							"value": "1"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a sticker on a card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/stickers/67aa68f9b15460c85f560ffd?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"stickers",
+						"67aa68f9b15460c85f560ffd"
+					],
+					"query": [
+						{
+							"key": "image",
+							"value": "taco-cool",
+							"disabled": true
+						},
+						{
+							"key": "top",
+							"value": "60",
+							"disabled": true
+						},
+						{
+							"key": "left",
+							"value": "40",
+							"disabled": true
+						},
+						{
+							"key": "zIndex",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a sticker on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/stickers/67aa68f9b15460c85f560ffd?top=60&left=35&zIndex=1&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"stickers",
+						"67aa68f9b15460c85f560ffd"
+					],
+					"query": [
+						{
+							"key": "top",
+							"value": "60"
+						},
+						{
+							"key": "left",
+							"value": "35"
+						},
+						{
+							"key": "zIndex",
+							"value": "1"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a comment on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/actions/comments?text=Its the first comment added by the Postman&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"actions",
+						"comments"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "Its the first comment added by the Postman"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a comment on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/actions/67ab950190cb53a7bd313988/comments?text=Its my first comment added by the Postman&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"actions",
+						"67ab950190cb53a7bd313988",
+						"comments"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "Its my first comment added by the Postman"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a label on a board",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/labels?name=Tuesday&color=lime&idBoard={{Board ID}}&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"labels"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Tuesday"
+						},
+						{
+							"key": "color",
+							"value": "lime"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{Board ID}}"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a label on a board",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/labels/67ab9a51d1ff94899eafe2e8?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"labels",
+						"67ab9a51d1ff94899eafe2e8"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a label on a board",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/labels/67ab9a51d1ff94899eafe2e8?key={{Key}}&token={{Token}}&color=pink",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"labels",
+						"67ab9a51d1ff94899eafe2e8"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "color",
+							"value": "pink"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a field of a label on a board",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/labels/67ab9a51d1ff94899eafe2e8/name?value=Wednesday&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"labels",
+						"67ab9a51d1ff94899eafe2e8",
+						"name"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "Wednesday"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a label to a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/idLabels?key={{Key}}&token={{Token}}&value=67ab9a51d1ff94899eafe2e8",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"idLabels"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "value",
+							"value": "67ab9a51d1ff94899eafe2e8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a label on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/labels?color=pink&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"labels"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "pink"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mark a card's notification as read",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/markAssociatedNotificationsRead?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"markAssociatedNotificationsRead"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Move all cards to another list",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/lists/{id}/moveAllCards?idBoard=&idList=&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{id}",
+						"moveAllCards"
+					],
+					"query": [
+						{
+							"key": "idBoard",
+							"value": ""
+						},
+						{
+							"key": "idList",
+							"value": ""
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Move list to another board",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/lists/{id}/idBoard?value=5abbe4b7ddc1b351ef961414&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						"{id}",
+						"idBoard"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "5abbe4b7ddc1b351ef961414"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Batch requests",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/batch?urls=/cards&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"batch"
+					],
+					"query": [
+						{
+							"key": "urls",
+							"value": "/cards"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of available emoji",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/emoji",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"emoji"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations?displayName=Welcome to the First Organization&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations"
+					],
+					"query": [
+						{
+							"key": "displayName",
+							"value": "Welcome to the First Organization"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get an organization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an organization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32?key={{Key}}&token={{Token}}&name =First Organization",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "name ",
+							"value": "First Organization"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get field on organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/name?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"name"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get actions on organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/actions?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"actions"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get boards on organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/boards?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the members of an organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/members?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"members"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update the organization members",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/members?email={email}&fullName={fullName}&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"members"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "{email}"
+						},
+						{
+							"key": "fullName",
+							"value": "{fullName}"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a member of an organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/members/{idMember}?type={type}&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"members",
+						"{idMember}"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "{type}"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deactivate a member of an organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/members/{idMember}/deactivated?value=false&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"members",
+						"{idMember}",
+						"deactivated"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "false"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the memberships of an organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/memberships?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"memberships"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the plugin data  of an organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/plugindata?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"plugindata"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the tags of an organization Copy",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/tags?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"tags"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a logo for an organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "postman-cloud:///1efe7e55-326e-4640-ba8c-92a5af96d8d8"
+					}
+				},
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/logo?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"logo"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Trello",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/search?query=20&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "20"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search for members",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/search/members?query=20&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"search",
+						"members"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "20"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a webhook",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/webhooks/?callbackURL=https://jsonplaceholder.typicode.com/posts&idModel=5abbe4b7ddc1b351ef961414&key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"webhooks",
+						""
+					],
+					"query": [
+						{
+							"key": "callbackURL",
+							"value": "https://jsonplaceholder.typicode.com/posts"
+						},
+						{
+							"key": "idModel",
+							"value": "5abbe4b7ddc1b351ef961414"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a webhook",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/webhooks/67af96ac5a3207be30d6641b?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"webhooks",
+						"67af96ac5a3207be30d6641b"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a webhook",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/webhooks/67af96ac5a3207be30d6641b?key={{Key}}&token={{Token}}&description=302",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"webhooks",
+						"67af96ac5a3207be30d6641b"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						},
+						{
+							"key": "description",
+							"value": "302"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a field on a webhook",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/webhooks/67af96ac5a3207be30d6641b/active?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"webhooks",
+						"67af96ac5a3207be30d6641b",
+						"active"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a webhook",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{trello_url}}/1/webhooks/{id}/?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"webhooks",
+						"{id}",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/actions/{id}?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"actions",
+						"{id}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a comment on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/actions/67ab950190cb53a7bd313988/comments?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"actions",
+						"67ab950190cb53a7bd313988",
+						"comments"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a sticker",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/stickers/67aa68f9b15460c85f560ffd?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"stickers",
+						"67aa68f9b15460c85f560ffd"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a check item",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/checkItem/67aa6505d71c1d597591a1d5?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"checkItem",
+						"67aa6505d71c1d597591a1d5"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a checklist on a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/checklists/67aa610f832dd16dfb4ce98f?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"checklists",
+						"67aa610f832dd16dfb4ce98f"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove a member from a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/idMembers/{idMember}?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"idMembers",
+						"{idMember}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove a member's vote from a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/membersVoted/{idMember}?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"membersVoted",
+						"{idMember}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a label",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/labels/{id}?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"labels",
+						"{id}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a label from a card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}/idLabels/67ab9bb562a4720149f18bc7?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}",
+						"idLabels",
+						"67ab9bb562a4720149f18bc7"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Card",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/cards/{{Card ID}}?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						"{{Card ID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete board",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/boards/{{Board ID}}?key={{Key}}&name=My board&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Board ID}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "name",
+							"value": "My board"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove a member from organization",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/members/{idMember}?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"members",
+						"{idMember}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove a member from all organizations",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32/members/{idMember}/all?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32",
+						"members",
+						"{idMember}",
+						"all"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an organization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{trello_url}}/1/organizations/67af8d7f52a19e27956a0e32?key={{Key}}&token={{Token}}",
+					"host": [
+						"{{trello_url}}"
+					],
+					"path": [
+						"1",
+						"organizations",
+						"67af8d7f52a19e27956a0e32"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {\r",
+					"    pm.response.to.have.status(200);\r",
+					"});\r",
+					"pm.test(\"Response time is less than 3000ms\", function () {\r",
+					"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+					"});"
+				]
+			}
+		}
+	]
+}
